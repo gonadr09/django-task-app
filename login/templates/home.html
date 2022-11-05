@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mx-auto my-10 p-10 border rounded">
+
+    <h1 class="text-5xl text-center">DJANGO TASK APP 🦄</h1>
+    <p class="py-7 text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam quidem fugiat officiis
+        vel! Quos, iure enim. Similique sunt molestiae tempora hic, expedita tempore in, placeat earum inventore veniam,
+        aliquam excepturi ratione. Perferendis rem atque ad dolorum libero enim possimus soluta, eaque voluptatum.
+        Libero, aliquam odio. Temporibus eum veritatis similique debitis ut cupiditate, fuga provident. Ex nam placeat
+        quibusdam perferendis eaque eos assumenda tenetur quam, repudiandae earum qui ipsam accusamus quod, dicta a
+        incidunt mollitia sint facere reprehenderit tempore deserunt consequatur repellat. Consequuntur aut sed
+        recusandae eveniet ipsam voluptatem blanditiis beatae id tenetur optio! Laborum deleniti odit quam voluptatem ex
+        quia.</p>
+    <ul class="flex justify-center gap-5 mt-2">
+        <li>
+            <a class="bg-sky-600 text-gray-50 py-2 px-4 rounded" href="{% url 'signin' %}">Login</a>
+        </li>
+        <li>
+            <a class="bg-sky-600 text-gray-50 py-2 px-4 rounded" href="{% url 'signup' %}">Sign up</a>
+        </li>
+    </ul>
+
+</div>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mx-auto my-10 px-7 py-6 grid block max-w-md border rounded">
+    <h1 class="text-5xl text-center mb-5">Sign up</h1>
+    <form method="POST" class="flex flex-col gap-3">
+        {% if submit_message %}
+        <p class="text-red-500">{{ submit_message }}</p>
+        {% endif %}
+        {% csrf_token %}
+    <!-- {{ form.as_p }} -->
+    <div class="flex flex-col">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" class="border-gray-300 rounded focus:border-sky-500 focus:ring-0" placeholder="Write your username">
+    </div>
+    <div class="flex flex-col">
+        <label for="password1">Password:</label>
+        <input type="password" name="password1" id="password1" class="border-gray-300 rounded focus:border-sky-500 focus:ring-0" placeholder="Write your password">
+    </div>
+    <div class="flex flex-col">
+        <label for="password2">Confirm password:</label>
+        <input type="password" name="password2" id="password2" class="border-gray-300 rounded focus:border-sky-500 focus:ring-0" placeholder="Confirm your password">
+    </div>
+    <div class="grid mt-3">
+        <button class="bg-sky-600 text-gray-50 py-2 px-4 rounded" id="submit">Sign up</button>
+    </div>
+
+</form>
+
+<!-- <script>
+    const $ = (element) => document.querySelector(element)
+    const submit = $('submit')
+    submit.addEventListener('click', (e) => {
+        e.preventDefault()
+        console.log(e)
+        const form = $('#form')
+        console.log(form)
+        const formData = new FormData(form);
+        console.log(formData)
+        const pairs = [];
+
+        // Add each name/value pair to the array
+        for (const [name, value] of formData) {
+            pairs.push({ name, value });
+        }
+
+        // Return the array
+        console.log(pairs)
+
+        const dict = {}
+        dict[pairs[0]['name']] = pairs[0]['value']
+        console.log(dict)
+
+
+        const username = $('#id_username')
+        const password = $('#id_password1')
+        console.log('funciona!')
+        fetch('{% url "signup" %}', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: dict
+        })
+            .then(res => res.json)
+            .then(json => console.log(json))
+    })
+</script> -->
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>Update</button>
+</form> -->
+
+<div class="container mx-auto my-10 px-7 py-6 grid block max-w-md border rounded">
+    <h1 class="text-5xl text-center mb-5">Detail task</h1>
+    <form method="POST" class="flex flex-col gap-3">
+        {% csrf_token %}
+        {% if error %}
+        <p class="text-red-500">{{ error }}</p>
+        {% endif %}
+        <div class="flex flex-col">
+            <label for="title">Title:</label>
+            <input type="text" name="title" id="id_title"
+                class="border-gray-300 rounded focus:border-sky-500 focus:ring-0" placeholder="Write the task title:"
+                value="{{ task.title }}">
+        </div>
+        <div class="flex flex-col">
+            <label for="description">Description:</label>
+            <textarea name="description" id="id_description"
+                class="border-gray-300 rounded focus:border-sky-500 focus:ring-0"
+                placeholder="Write the task description" rows="5">{{ task.description }}</textarea>
+        </div>
+        <div class="flex flex-row items-center gap-3">
+            <label for="id_important">Important:</label>
+            <input type="checkbox" name="important" id="id_important" {% if task.important %} checked {% endif %}>
+        </div>
+        <div class="grid mt-1">
+            <button class="bg-sky-600 text-gray-50 py-2 px-4 rounded" id="submit">Update task</button>
+        </div>
+    </form>
+
+    <form method="POST" action="{% url 'complete_task' task.id %}">
+        {% csrf_token %}
+        <div class="grid mt-1">
+            <button class="bg-emerald-600 text-gray-50 py-2 px-4 rounded" id="submit">Complete</button>
+        </div>
+    </form>
+
+    <form method="POST" action="{% url 'delete_task' task.id %}">
+        {% csrf_token %}
+        <div class="grid mt-1">
+            <button class="bg-pink-600 text-gray-50 py-2 px-4 rounded" id="submit">Delete</button>
+        </div>
+    </form>
+
+</div>
+
+
+
+{% endblock %}

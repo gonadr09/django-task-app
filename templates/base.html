@@ -1,0 +1,51 @@
+{% load tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% tailwind_css %}
+
+    <title>Django CRUD App</title>
+</head>
+
+<body>
+    <div class="bg-gray-900 text-gray-50">
+
+    <nav class="container mx-auto p-4 flex justify-between">
+        <div class="">
+            <a href="{% url 'home' %}">Django Task App 🦄</a> 
+        </div>
+        <ul class="flex gap-5">
+            {% if user.is_authenticated %}
+            <li>
+                <a href="{% url 'tasks' %}">Tasks pending</a>
+            </li>
+            <li>
+                <a href="{% url 'tasks_completed' %}">Tasks completed</a>
+            </li>
+            <li>
+                <a href="{% url 'create_task' %}">Create task</a>
+            </li>
+            <li>
+                <a href="{% url 'signout' %}">Logout</a>
+            </li>
+            {% else %}
+            <li>
+                <a href="{% url 'signin' %}">Login</a>
+            </li>
+            <li>
+                <a href="{% url 'signup' %}">Signup</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+
+    {% block content %}
+    {% endblock%}
+
+</body>
+
+</html>
